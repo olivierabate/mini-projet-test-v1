@@ -21,3 +21,37 @@ class Document(db.Model):
 
 db.create_all()
 
+@app.route('/documents/<id>', methods=['GET'])
+def get_document(id):
+  document = Document.query.get(id)
+  del document.__dict__['_sa_instance_state']
+  return jsonify(document.__dict__)
+
+@app.route('/documents', methods=['GET'])
+def get_documents():
+  documents = []
+  for document in db.session.query(Document).all():
+    del document.__dict__['_sa_instance_state']
+    documents.append(document.__dict__)
+  return jsonify(documents)
+
+@app.route('/documents', methods=['POST'])
+def create_document():
+  body = request.get_json()
+  db.session.add(Document(body['title'], body['text']))
+  db.session.commit()
+  return "document created"
+
+@app.route('/documents/<id>', methods=['PUT'])
+def update_document(id):
+  body = request.get_json()
+  db.session.query(Document).filter_by(id=id).update(
+    dict(title=body['title'], text=body['text']))
+  db.session.commit()
+  return "document updated"
+
+@app.route('/documents/<id>', methods=['DELETE'])
+def delete_document(id):
+  db.session.query(Document).filter_by(id=id).delete()
+  db.session.commit()
+  return "document deleted"
