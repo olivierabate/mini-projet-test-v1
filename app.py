@@ -20,3 +20,4 @@ class Document(db.Model):
     self.text = text
 
 db.create_all()
+
