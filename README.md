@@ -61,8 +61,8 @@ In this case, just run `docker system prune` and build the image again with `doc
   
 ## To do
   
-* Unit tests
+* Unit tests (On startup ? Run manually?)
   
-* Authentication
+* Authentication (OAuth2 ?)
   
 * Auto-doc OpenAPI (Swagger)
