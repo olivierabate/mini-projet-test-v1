@@ -46,8 +46,6 @@ Enter psql from command line :
 
 Then type :
 
-`SELECT * FROM document;`
-
 `DELETE FROM document;`
 
 `ALTER SEQUENCE document_id_seq RESTART WITH 1`
