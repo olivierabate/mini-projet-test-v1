@@ -9,7 +9,7 @@ Simple CRUD API using Docker, Flask and Postgres.
 
 Get the repo locally :
 
-`git clone 
+`git clone https://github.com/olivierabate/mini-projet-test-v1`
 
 Build and launch Python app (first time) : 
 
